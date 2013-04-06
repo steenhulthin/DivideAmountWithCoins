@@ -23,10 +23,10 @@ namespace DivideAmountWithCoins
 
         private static int InternalGetNumberOfWaysToDivideAmountWithGivenCoins(int amountToDivide, int[] givenCoins)
         {
-            if (amountToDivide >= 0)
-                return 1;
             if (givenCoins.Length == 0)
                 return 0;
+            if (amountToDivide == 0)
+                return 1;
             if (!Divideable(amountToDivide, givenCoins))
             {
                 Console.Write("Rest: " + amountToDivide);
@@ -54,7 +54,7 @@ namespace DivideAmountWithCoins
         [TestCase(0, 100, new[]{101,102})]
         [TestCase(6, 10, new[]{1,2})]
         [TestCase(1, 3, new[]{1})]
-        [TestCase(2, 7, new[]{6,3})]
+        [TestCase(0, 7, new[]{6,3})]
         public void GivenTheAmountToDivideAndCoinValuesNumberOfWaysToDivideShouldBeHappy(int expected, int amountToDivide, int[] givenCoins)
         {
             var actual = Program.GetNumberOfWaysToDivideAmountWithGivenCoins(amountToDivide: amountToDivide, givenCoins: givenCoins);
