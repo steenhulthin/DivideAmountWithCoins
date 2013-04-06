@@ -6,9 +6,20 @@ namespace DivideAmountWithCoins
 {
     static class Program
     {
+        private static string usage = "Usage: " + System.AppDomain.CurrentDomain.FriendlyName + " <amount : integer> <coin value : integer> ... <coin value : integer>";
+
         static void Main(string[] args)
         {
-            Console.WriteLine(GetNumberOfWaysToDivideAmountWithGivenCoins(int.Parse(args[0]), args.Skip(1).Select(n => int.Parse(n)).ToArray()));
+            int wayToDivide;
+            try
+            {
+                wayToDivide = GetNumberOfWaysToDivideAmountWithGivenCoins(int.Parse(args[0]), args.Skip(1).Select(n => int.Parse(n)).ToArray());
+                Console.WriteLine(wayToDivide);
+            }
+            catch (Exception)
+            {
+                 Console.WriteLine(usage);
+            }
             Console.ReadLine();
         }
 
@@ -16,7 +27,6 @@ namespace DivideAmountWithCoins
         {
             Array.Sort(givenCoins);
             return InternalGetNumberOfWaysToDivideAmountWithGivenCoins(amountToDivide, givenCoins);
-            
         }
 
         private static int InternalGetNumberOfWaysToDivideAmountWithGivenCoins(int amountToDivide, int[] givenCoins)
