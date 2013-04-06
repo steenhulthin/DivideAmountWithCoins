@@ -8,11 +8,9 @@ namespace DivideAmountWithCoins
     {
         static void Main(string[] args)
         {
+            Console.WriteLine(GetNumberOfWaysToDivideAmountWithGivenCoins(int.Parse(args[0]), args.Skip(1).Select(n => int.Parse(n)).ToArray()));
+            Console.ReadLine();
         }
-
-        // get amount and coin values.
-        // order coin values
-        // check if current amount is smaller than current largest coin
 
         public static int GetNumberOfWaysToDivideAmountWithGivenCoins(int amountToDivide, int[] givenCoins)
         {
@@ -29,7 +27,6 @@ namespace DivideAmountWithCoins
                 return 1;
             if (!Divideable(amountToDivide, givenCoins))
             {
-                Console.Write("Rest: " + amountToDivide);
                 return 0;
             }
             return InternalGetNumberOfWaysToDivideAmountWithGivenCoins(amountToDivide, givenCoins.Take(givenCoins.Length - 1).ToArray()) + InternalGetNumberOfWaysToDivideAmountWithGivenCoins(amountToDivide - givenCoins.Last(), givenCoins);
