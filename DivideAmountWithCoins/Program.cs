@@ -70,7 +70,5 @@ namespace DivideAmountWithCoins
             var actual = Program.GetNumberOfWaysToDivideAmountWithGivenCoins(amountToDivide: amountToDivide, givenCoins: givenCoins);
             Assert.That(actual, Is.EqualTo(expected));
         }
-
-
     }
 }
