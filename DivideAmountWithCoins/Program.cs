@@ -13,7 +13,7 @@ namespace DivideAmountWithCoins
             int wayToDivide;
             try
             {
-                wayToDivide = GetNumberOfWaysToDivideAmountWithGivenCoins(int.Parse(args[0]), args.Skip(1).Select(n => int.Parse(n)).Distinct().ToArray());
+                wayToDivide = GetNumberOfWaysToDivideAmountWithGivenCoins(int.Parse(args[0]), args.Skip(1).Select(n => int.Parse(n)).ToArray());
                 Console.WriteLine(wayToDivide);
             }
             catch (Exception)
@@ -25,8 +25,9 @@ namespace DivideAmountWithCoins
 
         public static int GetNumberOfWaysToDivideAmountWithGivenCoins(int amountToDivide, int[] givenCoins)
         {
-            Array.Sort(givenCoins);
-            return InternalGetNumberOfWaysToDivideAmountWithGivenCoins(amountToDivide, givenCoins);
+            var uniqueGivenCoins = givenCoins.Distinct().ToArray();
+            Array.Sort(uniqueGivenCoins);
+            return InternalGetNumberOfWaysToDivideAmountWithGivenCoins(amountToDivide, uniqueGivenCoins);
         }
 
         private static int InternalGetNumberOfWaysToDivideAmountWithGivenCoins(int amountToDivide, int[] givenCoins)
@@ -65,6 +66,7 @@ namespace DivideAmountWithCoins
         [TestCase(6, 7, new[]{1,2,4})]
         [TestCase(6, 15, new[]{1,6,7})]
         [TestCase(6, 15, new[]{6,1,7})]
+        [TestCase(6, 15, new[]{6,6,6,1,7})]
         public void GivenTheAmountToDivideAndCoinValuesNumberOfWaysToDivideShouldBeHappy(int expected, int amountToDivide, int[] givenCoins)
         {
             var actual = Program.GetNumberOfWaysToDivideAmountWithGivenCoins(amountToDivide: amountToDivide, givenCoins: givenCoins);
