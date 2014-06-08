@@ -13,7 +13,7 @@ namespace DivideAmountWithCoins
             int wayToDivide;
             try
             {
-                wayToDivide = GetNumberOfWaysToDivideAmountWithGivenCoins(int.Parse(args[0]), args.Skip(1).Select(n => int.Parse(n)).ToArray());
+                wayToDivide = GetNumberOfWaysToDivideAmountWithGivenCoins(int.Parse(args[0]), args.Skip(1).Select(n => int.Parse(n)).Distinct().ToArray());
                 Console.WriteLine(wayToDivide);
             }
             catch (Exception)
@@ -70,5 +70,7 @@ namespace DivideAmountWithCoins
             var actual = Program.GetNumberOfWaysToDivideAmountWithGivenCoins(amountToDivide: amountToDivide, givenCoins: givenCoins);
             Assert.That(actual, Is.EqualTo(expected));
         }
+
+
     }
 }
