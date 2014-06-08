@@ -64,6 +64,7 @@ namespace DivideAmountWithCoins
         [TestCase(0, 7, new[]{6,3})]
         [TestCase(6, 7, new[]{1,2,4})]
         [TestCase(6, 15, new[]{1,6,7})]
+        [TestCase(6, 15, new[]{6,1,7})]
         public void GivenTheAmountToDivideAndCoinValuesNumberOfWaysToDivideShouldBeHappy(int expected, int amountToDivide, int[] givenCoins)
         {
             var actual = Program.GetNumberOfWaysToDivideAmountWithGivenCoins(amountToDivide: amountToDivide, givenCoins: givenCoins);
