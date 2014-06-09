@@ -4,7 +4,7 @@ DivideAmountWithCoins is an solution to algorithmic exercise. I believe I encoun
 
 ##The Problem
 
-The problem is: how many ways can you make a given amount (ie 9) with (unlimited) coins of given values (ie 5, 2 and 1)?
+The problem is: how many ways can you make a given amount (ie 7) with (unlimited) coins of given values (ie 4, 2 and 1)?
 
 ##The Solution
 
@@ -20,9 +20,9 @@ I don't even know how to write that mathematically, but I'll give it a shot:
 
 I'll call: 
 
-* the given amount ( `n` ) (the one you want to make).
+* the given amount ( `n` ) (the one you want to make - 7 in the example in the problem section).
 * the ways you can make a given amount with the given coins `result`. 
-* the given coin values mall = m1, m2, m3 ... mx ( m1 = 5, m2 = 2 and m3 = 1 in the example in the problem section ).
+* the given coin values mall = m1, m2, m3 ... mx ( m1 = 4, m2 = 2 and m3 = 1 in the example in the problem section ).
 
 `n given mx  = n given ( mall - mx ) + ( n - mx ) given mx`
 
@@ -35,4 +35,22 @@ Combine this with the following:
 Now it is a matter of recursively using the formula until reaching one of the above conditions (and counting the number of times you go through the recursion). 
 ##Example
 
-How many way can I get the amount 15 
+How many way can I get the amount 7 with the coins 4, 2 and 1?
+
+Let's first go through all the combinations:
+
+* 4, 2, 1
+* 4, 1, 1, 1
+* 2, 2, 2, 1
+* 2, 2, 1, 1, 1
+* 2, 1, 1, 1, 1, 1
+* 1, 1, 1, 1, 1, 1, 1
+
+Ok, it's clear that the result is that we can make the amount 7 in 6 ways combining the coins values 4, 2 and 1. 
+
+So let's look at the formula: 
+
+`n given mx  = n given ( mall - mx ) + ( n - mx ) given mx`
+
+7 given coins 4, 2 and 1 = 7 given 2 and 1 (4, 2, 1 - 4) + 3 (7 - 4) given 4, 2, 1
+
