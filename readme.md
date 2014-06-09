@@ -14,7 +14,7 @@ Anyway (I read this from the code I wrote a year ago) it turns out that the numb
 
 ##The Math behind
 
-### Warning - just by reading this you will kill kittens. Sorry it's the best I can do in the given time. The given time here, by the way, is my life.
+### Warning - just by reading this you will kill kittens - it's most likely not a very good explanation. Sorry it's the best I can do in the given time. The given time here, by the way, is my life.
 
 I don't even know how to write that mathematically, but I'll give it a shot:
 
@@ -33,3 +33,6 @@ Combine this with the following:
 * If all your coins are larger than the amount you need to make you are out of luck (and the number of ways make the given amount is zero). 
 
 Now it is a matter of recursively using the formula until reaching one of the above conditions (and counting the number of times you go through the recursion). 
+##Example
+
+How many way can I get the amount 15 
