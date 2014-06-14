@@ -6,7 +6,7 @@ namespace DivideAmountWithCoins
 {
     static class Program
     {
-        private static string usage = "Usage: " + System.AppDomain.CurrentDomain.FriendlyName + " <amount : integer> <coin value : integer> ... <coin value : integer>";
+        private static readonly string usage = "Usage: " + AppDomain.CurrentDomain.FriendlyName + " <amount : integer> <coin value : integer> ... <coin value : integer>";
 
         static void Main(string[] args)
         {
@@ -45,8 +45,7 @@ namespace DivideAmountWithCoins
 
         private static bool Divideable(int amountToDivide, int[] givenCoins)
         {
-            var divideable = givenCoins.Min() <= amountToDivide;
-            return divideable;
+            return givenCoins.Min() <= amountToDivide;
         }
     }
 
