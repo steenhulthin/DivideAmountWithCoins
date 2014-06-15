@@ -10,10 +10,9 @@ namespace DivideAmountWithCoins
 
         static void Main(string[] args)
         {
-            int wayToDivide;
             try
             {
-                wayToDivide = GetNumberOfWaysToDivideAmountWithGivenCoins(int.Parse(args[0]), args.Skip(1).Select(n => int.Parse(n)).ToArray());
+                int wayToDivide = GetNumberOfWaysToDivideAmountWithGivenCoins(int.Parse(args[0]), args.Skip(1).Select(n => int.Parse(n)).ToArray());
                 Console.WriteLine(wayToDivide);
             }
             catch (Exception)
@@ -40,7 +39,8 @@ namespace DivideAmountWithCoins
             {
                 return 0;
             }
-            return InternalGetNumberOfWaysToDivideAmountWithGivenCoins(amountToDivide, givenCoins.Take(givenCoins.Length - 1).ToArray()) + InternalGetNumberOfWaysToDivideAmountWithGivenCoins(amountToDivide - givenCoins.Last(), givenCoins);
+            return InternalGetNumberOfWaysToDivideAmountWithGivenCoins(amountToDivide, givenCoins.Take(givenCoins.Length - 1).ToArray()) + 
+                InternalGetNumberOfWaysToDivideAmountWithGivenCoins(amountToDivide - givenCoins.Last(), givenCoins);
         }
 
         private static bool Divideable(int amountToDivide, int[] givenCoins)
